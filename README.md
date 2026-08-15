@@ -37,7 +37,7 @@ WhatsApp message → Meta Cloud API webhook → Express server
    - Your **Phone Number ID**
    - A test recipient number you can message immediately
 4. For a permanent token: go to Business Settings → System Users → create a system user → generate a **permanent token** with `whatsapp_business_messaging` permission.
-5. Choose your own random string as `WHATSAPP_VERIFY_TOKEN` (you'll enter this same string in Meta's webhook setup later — it's just a shared secret to confirm the webhook is really coming from Meta).
+5. Choose your random string as `WHATSAPP_VERIFY_TOKEN` (you'll enter this same string in Meta's webhook setup later — it's just a shared secret to confirm the webhook is really coming from Meta).
 
 ### B. Google Gemini API (free tier)
 1. Go to https://aistudio.google.com/apikey
