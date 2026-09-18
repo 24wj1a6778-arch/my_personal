@@ -15,7 +15,6 @@ WhatsApp message → Meta Cloud API webhook → Express server
   → Meta Cloud API (send reply back to user)
 ```
 
----
 
 ## 1. Prerequisites
 
