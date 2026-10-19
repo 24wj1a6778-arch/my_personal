@@ -3,19 +3,12 @@
 Auto-replies to incoming WhatsApp messages using Meta Cloud API + Google Gemini + Upstash Redis.
 Runs on Render/Railway free tier.
 
----
-
 ## Architecture
-
-```
 WhatsApp message → Meta Cloud API webhook → Express server
   → Upstash Redis (fetch conversation history)
   → Google Gemini API (generate reply)
   → Upstash Redis (save updated history)
   → Meta Cloud API (send reply back to user)
-```
-
-
 ## 1. Prerequisites
 
 - Node.js 18+ installed
@@ -23,8 +16,6 @@ WhatsApp message → Meta Cloud API webhook → Express server
 - A Meta (Facebook) developer account
 - A Google account (for Gemini API)
 - An Upstash account (for Redis)
-
----
 
 ## 2. Get your API keys
 
@@ -48,8 +39,6 @@ WhatsApp message → Meta Cloud API webhook → Express server
 2. Create a new Redis database (choose a region close to your backend host).
 3. In the database details page, copy the **REST URL** and **REST Token** — these are `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
 
----
-
 ## 3. Run the project locally in VSCode
 
 1. Open this folder in VSCode.
@@ -67,8 +56,6 @@ WhatsApp message → Meta Cloud API webhook → Express server
    ```
    You should see `Server running on port 3000`.
 
----
-
 ## 4. Expose your local server for webhook testing (development only)
 
 Meta needs a public HTTPS URL to send webhooks to. Use ngrok for local testing:
@@ -79,9 +66,7 @@ Meta needs a public HTTPS URL to send webhooks to. Use ngrok for local testing:
    ngrok http 3000
    ```
 3. Copy the `https://xxxx.ngrok-free.app` URL it gives you.
-
----
-
+   
 ## 5. Configure the webhook in Meta
 
 1. In your Meta App → WhatsApp → Configuration → Webhook.
@@ -90,14 +75,10 @@ Meta needs a public HTTPS URL to send webhooks to. Use ngrok for local testing:
 4. Click **Verify and Save** (this triggers the GET request your server already handles).
 5. Subscribe to the **messages** field under Webhook Fields.
 
----
-
 ## 6. Test it
 
 Send a WhatsApp message to your test number from the number Meta added as a tester.
 You should see logs in your terminal, and receive an auto-reply back on WhatsApp within a few seconds.
-
----
 
 ## 7. Deploy for free (so it runs without your laptop/ngrok)
 
@@ -114,8 +95,6 @@ Same steps as Render — connect repo, set env vars, deploy, update webhook URL.
 
 **Note:** Free tiers on Render/Railway may "sleep" after inactivity, causing a delay (10-30 sec) on the first message after idle time. This is expected on free tier.
 
----
-
 ## 8. Free-tier limits to watch
 
 | Service | Free limit |
@@ -126,8 +105,6 @@ Same steps as Render — connect repo, set env vars, deploy, update webhook URL.
 | Render/Railway | Free web service sleeps after ~15 min inactivity |
 
 If you outgrow these, the only paid step usually needed first is Meta's Cloud API conversations beyond 1,000/month — everything else has headroom for personal-scale use.
-
----
 
 ## 9. Customizing behavior
 
